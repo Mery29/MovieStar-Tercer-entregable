@@ -5,51 +5,20 @@
  */
 package cr.ac.una.prograiv.moviestar.utils;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
+import org.hibernate.*;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
  * object.
  *
- * @author Mery Zúñiga
+ * @author Byron
  */
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
     private Session sesion;
-    private Transaction transac;
-
-    static {
-        try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
-            //sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-            sessionFactory=new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory() ;
-        } catch (Throwable ex) {
-            // Log the exception. 
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
-
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public void iniciaOperacion() throws HibernateException {
-        sesion = HibernateUtil.getSessionFactory().openSession();
-        transac = sesion.beginTransaction();
-    }
-
-    public void manejaExcepcion(HibernateException he) throws HibernateException {
-        transac.rollback();
-        throw new HibernateException("Ocurrió un error en la capa de "
-                                   + "acceso a datos", he);
-    }
 
     public Session getSesion() {
         return sesion;
@@ -65,5 +34,32 @@ public class HibernateUtil {
 
     public void setTransac(Transaction transac) {
         this.transac = transac;
+    }
+    
+    public void iniciaOperacion() throws HibernateException {
+        sesion = HibernateUtil.getSessionFactory().openSession();
+        transac = sesion.beginTransaction();
+    }
+
+    public void manejaExcepcion(HibernateException he) throws HibernateException {
+        transac.rollback();
+        throw new HibernateException("Se generó un error con la base de datos, por favor contácte al administrador", he);
+    }
+    
+    private Transaction transac;
+    static {
+        try {
+            // Create the SessionFactory from standard (hibernate.cfg.xml) 
+            // config file.
+            sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
+        } catch (Throwable ex) {
+            // Log the exception. 
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
+    
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 }

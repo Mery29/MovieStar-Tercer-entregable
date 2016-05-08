@@ -1,5 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/05/2016 06:56:16 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class name="cr.ac.una.prograiv.moviestar.domain.Categorias" table="categorías"/>
+    <class name="cr.ac.una.prograiv.moviestar.domain.Categorias" table="categorias" catalog="moviestar" optimistic-lock="version">
+        <id name="CId" type="int">
+            <column name="c_Id" />
+            <generator class="assigned" />
+        </id>
+        <property name="CNombre" type="string">
+            <column name="c_nombre" length="15" not-null="true" />
+        </property>
+        <property name="CObs" type="string">
+            <column name="c_Obs" length="45" not-null="true" />
+        </property>
+        <set name="catalogoses" table="catalogos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_categoria" />
+            </key>
+            <one-to-many class="cr.ac.una.prograiv.moviestar.domain.Catalogos" />
+        </set>
+    </class>
 </hibernate-mapping>

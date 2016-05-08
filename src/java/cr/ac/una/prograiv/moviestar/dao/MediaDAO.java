@@ -17,6 +17,9 @@ import org.hibernate.HibernateException;
  */
 public class MediaDAO extends HibernateUtil implements IBaseDAO<Media, Integer>{
 
+    public MediaDAO() {
+        super();
+    }
     @Override
     public void save(Media o) {
         try {

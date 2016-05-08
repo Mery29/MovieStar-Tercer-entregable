@@ -10,6 +10,8 @@ import java.util.List;
 /**
  *
  * @author Mery Zúñiga
+ * @param <T>
+ * @param <K>
  */
 public interface IBaseDAO <T,K> {
     public abstract void save (T o);

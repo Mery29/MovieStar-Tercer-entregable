@@ -51,7 +51,7 @@ public class OrdenesServlet extends HttpServlet {
                     out.print(json);
                     break;
                 case "eliminarOrden":
-                    o.setPk_idOrden(Integer.parseInt(request.getParameter("idOrden")));
+                    o.setOId(Integer.parseInt(request.getParameter("idOrden")));
                      //Se elimina el objeto
                     oBL.delete(o);
 
@@ -74,21 +74,21 @@ public class OrdenesServlet extends HttpServlet {
                 case "agregarOrden": case "modificarOrden":
 
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
-                    o.setPk_idOrden(Integer.parseInt(request.getParameter("id_orden")));
-                    o.setEstado(request.getParameter("estado"));
-                    o.setFk_idUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+                    o.setOId(Integer.parseInt(request.getParameter("id_orden")));
+                    o.setOEstado(request.getParameter("estado"));
+                    //o.setUsuarios(Integer.parseInt(request.getParameter("idUsuario")));
                    
                     String fechatxt = request.getParameter("fechaOrden");
                     DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                     Date date = format.parse(fechatxt);
                     
-                    o.setFecha_orden(date);
+                    o.setOFecha(date);
                 
                     boolean validacion= false;
                     if(accion.equals("agregarOrden")){ //es insertar usuarios
                         List<Ordenes> lista = oBL.findAll(Ordenes.class.getName());
                         for(Ordenes usuarios : lista){
-                            if(o.getPk_idOrden()== usuarios.getPk_idOrden()){
+                            if(o.getOId()== usuarios.getOId()){
                                 out.print("E~Usted ha ingresado un código que ya existe");  //Código de la factura = idOrden
                                 validacion= true;
                             }

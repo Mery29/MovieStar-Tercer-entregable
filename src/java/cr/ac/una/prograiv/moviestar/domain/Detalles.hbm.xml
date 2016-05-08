@@ -1,5 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/05/2016 06:56:16 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class name="cr.ac.una.prograiv.moviestar.domain.Detalles" table="detalles"/>
+    <class name="cr.ac.una.prograiv.moviestar.domain.Detalles" table="detalles" catalog="moviestar" optimistic-lock="version">
+        <composite-id name="id" class="cr.ac.una.prograiv.moviestar.domain.DetallesId">
+            <key-property name="DIdO" type="int">
+                <column name="d_IdO" />
+            </key-property>
+            <key-property name="DIdC" type="int">
+                <column name="d_IdC" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="catalogos" class="cr.ac.una.prograiv.moviestar.domain.Catalogos" update="false" insert="false" fetch="select">
+            <column name="d_IdC" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ordenes" class="cr.ac.una.prograiv.moviestar.domain.Ordenes" update="false" insert="false" fetch="select">
+            <column name="d_IdO" not-null="true" />
+        </many-to-one>
+        <property name="DTipo" type="string">
+            <column name="d_tipo" length="10" />
+        </property>
+        <property name="DFechaLimite" type="date">
+            <column name="d_fechaLimite" length="10" />
+        </property>
+        <property name="DPrecio" type="java.lang.Float">
+            <column name="d_precio" precision="12" scale="0" />
+        </property>
+    </class>
 </hibernate-mapping>

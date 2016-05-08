@@ -52,7 +52,7 @@ public class UsuariosServlet extends HttpServlet {
                     out.print(json);
                     break;
                 case "eliminarUsuarios":
-                    u.setPk_idUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+                    u.setUId(Integer.parseInt(request.getParameter("idUsuario")));
                      //Se elimina el objeto
                     uBL.delete(u);
 
@@ -62,9 +62,9 @@ public class UsuariosServlet extends HttpServlet {
                     
                 case "consultarUsuariosPorCuenta":   //Se guarda un usuario y una contraseña en una persona, y se busca si la persona existe
                     //se consulta la persona por ID
-                    Usuarios consultado= null;
-                    consultado.setUsuario(request.getParameter("usuario"));
-                    consultado.setContraseña(request.getParameter("contraseña"));
+                    Usuarios consultado= new Usuarios();
+                    consultado.setUUsuario(request.getParameter("usuario"));
+                    consultado.setUContrasena(request.getParameter("contraseña"));
                     u = uBL.findByOther(consultado);
                     
                     //se pasa la informacion del objeto a formato JSON
@@ -75,22 +75,22 @@ public class UsuariosServlet extends HttpServlet {
                 case "agregarUsuario": case "modificarUsuario":
 
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
-                    u.setPk_idUsuario(Integer.parseInt(request.getParameter("cedula")));
-                    u.setNombre(request.getParameter("nombre"));
-                    u.setApellidos(request.getParameter("apellidos"));
+                    u.setUId(Integer.parseInt(request.getParameter("cedula")));
+                    u.setUNombre(request.getParameter("nombre"));
+                    u.setUApellidos(request.getParameter("apellidos"));
                    
                     String fechatxt = request.getParameter("fechaNacimiento");
                     DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                     Date date = format.parse(fechatxt);
                     
-                    u.setFechaNac(date);
-                    u.setContraseña(request.getParameter("contraseña"));
-                    u.setCorreo(request.getParameter("correo"));
-                    u.setTelCasa(Integer.parseInt(request.getParameter("telCasa")));
-                    u.setTelCel(Integer.parseInt(request.getParameter("telCel")));
-                    u.setTipoUsuario(request.getParameter("tipoUsuario"));
-                    u.setUsuario(request.getParameter("usuario"));
-                    u.setDireccion(request.getParameter("direccion"));
+                    u.setUFechaNac(date);
+                    u.setUContrasena(request.getParameter("contraseña"));
+                    u.setUCorreo(request.getParameter("correo"));
+                    u.setUTelCasa(request.getParameter("telCasa"));
+                    u.setUTelCel(request.getParameter("telCel"));
+                    u.setUTipo(request.getParameter("tipoUsuario"));
+                    u.setUUsuario(request.getParameter("usuario"));
+                    u.setUDireccion(request.getParameter("direccion"));
                     
                     
 
@@ -98,7 +98,7 @@ public class UsuariosServlet extends HttpServlet {
                     if(accion.equals("agregarUsuario")){ //es insertar usuarios
                         List<Usuarios> lista = uBL.findAll(Usuarios.class.getName());
                         for(Usuarios usuarios : lista){
-                            if(u.getUsuario() == usuarios.getUsuario()){
+                            if(usuarios.getUUsuario() == null ? u.getUUsuario() == null : usuarios.getUUsuario().equals(u.getUUsuario())){
                                 out.print("E~Usted ha ingresado un nombre de usuario que ya existe");
                                 validacion= true;
                             }

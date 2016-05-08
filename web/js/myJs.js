@@ -178,7 +178,7 @@ function testInputData(myfield, restrictionType) {
  var stringOnly = /^[A-Za-z0-9]+$/;
 function mostrarSlider() {
     $.ajax({
-        url: '/mediaServlet',
+        url: 'MediaServlet',
         data: {
             accion: "slider"
         },

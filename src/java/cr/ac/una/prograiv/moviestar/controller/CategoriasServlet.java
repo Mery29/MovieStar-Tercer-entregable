@@ -48,7 +48,7 @@ public class CategoriasServlet extends HttpServlet {
                     out.print(json);
                     break;
                 case "eliminarCategorias":  //que no debería necesitarse eliminar categorias, pero igual se implementa por si se necesitara
-                    c.setPk_id(Integer.parseInt(request.getParameter("idCategoría")));  //idCategoria viene siendo como un numero
+                    c.setCId(Integer.parseInt(request.getParameter("idCategoría")));  //idCategoria viene siendo como un numero
                      //Se elimina el objeto
                     cBL.delete(c);
 
@@ -58,7 +58,7 @@ public class CategoriasServlet extends HttpServlet {
                     
                 case "consultarCategoriasPorNombre":   
                     Categorias consultada= null;
-                    consultada.setNombre(request.getParameter("nombreCategoria"));
+                    consultada.setCNombre(request.getParameter("nombreCategoria"));
                     c = cBL.findByOther(consultada);
                     
                     //se pasa la informacion del objeto a formato JSON
@@ -69,15 +69,15 @@ public class CategoriasServlet extends HttpServlet {
                 case "agregarCategoria": case "modificarCategoria":  //Un modificar categoria no se usa
 
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
-                    c.setPk_id(Integer.parseInt(request.getParameter("idPelicula")));
-                    c.setNombre(request.getParameter("nombreCategoria"));
-                    c.setObservaciones(request.getParameter("observaciones"));
+                    c.setCId(Integer.parseInt(request.getParameter("idPelicula")));
+                    c.setCNombre(request.getParameter("nombreCategoria"));
+                    c.setCObs(request.getParameter("observaciones"));
                    
                     boolean validacion= false;
                     if(accion.equals("agregarCategoria")){ //es insertar categorias
                         List<Categorias> lista = cBL.findAllByOther(Categorias.class.getName());
                         for(Categorias categorias : lista){
-                            if(c.getNombre()== categorias.getNombre()){  //Compara si en lista ya se ha ingresado una categoría con el mismo nombre
+                            if(c.getCNombre()== categorias.getCNombre()){  //Compara si en lista ya se ha ingresado una categoría con el mismo nombre
                                 out.print("E~Usted ha ingresado una categoría que ya existe");
                                 validacion= true;
                             }

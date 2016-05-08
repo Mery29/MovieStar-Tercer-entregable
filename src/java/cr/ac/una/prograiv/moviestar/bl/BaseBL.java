@@ -9,6 +9,7 @@ import cr.ac.una.prograiv.moviestar.dao.CatalogosDAO;
 import cr.ac.una.prograiv.moviestar.dao.CategoriasDAO;
 import cr.ac.una.prograiv.moviestar.dao.DetallesDAO;
 import cr.ac.una.prograiv.moviestar.dao.IBaseDAO;
+import cr.ac.una.prograiv.moviestar.dao.MediaDAO;
 import cr.ac.una.prograiv.moviestar.dao.OrdenesDAO;
 import cr.ac.una.prograiv.moviestar.dao.UsuariosDAO;
 import java.util.LinkedHashMap;
@@ -22,11 +23,7 @@ private final LinkedHashMap<String, IBaseDAO> daos;
 
     public BaseBL() {
         daos = new LinkedHashMap();
-        daos.put("cr.ac.una.prograiv.moviestar.domain.Catalogos", new CatalogosDAO());
-        daos.put("cr.ac.una.prograiv.moviestar.domain.Categorias", new CategoriasDAO());
-        daos.put("cr.ac.una.prograiv.moviestar.domain.Detalles", new DetallesDAO());
-        daos.put("cr.ac.una.prograiv.moviestar.domain.Ordenes", new OrdenesDAO());
-        daos.put("cr.ac.una.prograiv.moviestar.domain.Usuarios", new UsuariosDAO());
+        daos.put("cr.ac.una.prograiv.moviestar.domain.Media", new MediaDAO());
     }
     
     public IBaseDAO getDao(String className){

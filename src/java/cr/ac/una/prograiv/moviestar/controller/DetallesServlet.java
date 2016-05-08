@@ -53,13 +53,13 @@ public class DetallesServlet extends HttpServlet {
                     out.print(json);
                     break;
                 case "eliminarOrden":
-                    d.setFk_idOrdenes(Integer.parseInt(request.getParameter("idOrden")));  //idCategoria viene siendo como un numero
+                    //d.setOrdenes(Integer.parseInt(request.getParameter("idOrden")));  //idCategoria viene siendo como un numero
                     dBL.delete(d);
                     break;
                     
                 case "consultarDetallesSegunOrden":    //Se le envía el id de la orden para ver cuantas ordenes tiene
                     Detalles buscado= null;
-                    buscado.setFk_idOrdenes(Integer.parseInt(request.getParameter("idOrden")));
+                    //buscado.setFk_idOrdenes(Integer.parseInt(request.getParameter("idOrden")));
                     d = dBL.findByOther(buscado);
                     json = new Gson().toJson(d);
                     out.print(json);
@@ -68,22 +68,22 @@ public class DetallesServlet extends HttpServlet {
                 case "agregarDetalle": case "modificarDetalle":
 
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
-                    d.setFk_idCatalogos(Integer.parseInt(request.getParameter("id_catalogo")));
-                    d.setFk_idOrdenes(Integer.parseInt(request.getParameter("id_orden")));
-                    d.setPrecio(Float.parseFloat(request.getParameter("precio")));
+                    //d.setFk_idCatalogos(Integer.parseInt(request.getParameter("id_catalogo")));
+                    //d.setFk_idOrdenes(Integer.parseInt(request.getParameter("id_orden")));
+                    //d.setPrecio(Float.parseFloat(request.getParameter("precio")));
                    
                     String fechatxt = request.getParameter("fechaLimite");
                     DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                     Date date = format.parse(fechatxt);
                     
-                    d.setFechaLimite(date);
-                    d.setTipo(request.getParameter("tipo"));
+                    //d.setFechaLimite(date);
+                    //d.setTipo(request.getParameter("tipo"));
                 
                     boolean validacion= false;
                     if(accion.equals("agregarDetalle")){ //es insertar orden 
                         List<Detalles> lista = dBL.findAll(Ordenes.class.getName());
                         for(Detalles detalles : lista){
-                            if(d.getFk_idOrdenes()== detalles.getFk_idOrdenes()){  //Una orden solo debera tener un detalle, entonces se pregunta si esa orden ya existe
+                            if(d.getOrdenes().getOId()== detalles.getOrdenes().getOId()){  //Una orden solo debera tener un detalle, entonces se pregunta si esa orden ya existe
                                 out.print("E~Usted ha ingresado un detalle a una orden existente");  
                                 validacion= true;
                             }

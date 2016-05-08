@@ -52,7 +52,7 @@ public class CatalogosServlet extends HttpServlet {
                     out.print(json);
                     break;
                 case "eliminarCatalogo":   //Podría darse el caso de eliminar una pelicula o serie
-                    c.setPk_idCata(Integer.parseInt(request.getParameter("idCatalogo")));
+                    c.setCId(Integer.parseInt(request.getParameter("idCatalogo")));
                      //Se elimina el objeto
                     cBL.delete(c);
 
@@ -63,10 +63,10 @@ public class CatalogosServlet extends HttpServlet {
                 case "buscarCatalogo":  
                     //se consulta la persona por ID
                     Catalogos consultado= null;
-                    consultado.setNombre(request.getParameter("nombreCatalogo"));
-                    consultado.setDirector(request.getParameter("director"));
-                    consultado.setActor_princ(request.getParameter("actorPrincipal"));
-                    consultado.setFk_idCateg(Integer.parseInt(request.getParameter("idCategoria")));
+                    consultado.setCNombre(request.getParameter("nombreCatalogo"));
+                    consultado.setCDirector(request.getParameter("director"));
+                    consultado.setCActorPrin(request.getParameter("actorPrincipal"));
+                    //consultado.setCategorias(Integer.parseInt(request.getParameter("idCategoria")));
                     c = cBL.findByOther(consultado);
                     
                     //se pasa la informacion del objeto a formato JSON
@@ -75,8 +75,8 @@ public class CatalogosServlet extends HttpServlet {
                     break;
                     
                 case "consultarCatalogoPorId":  //Sería buscar pelicula o Serie por código que viene siendo el id 
-                    Catalogos buscada= null;
-                    buscada.setPk_idCata(Integer.parseInt(request.getParameter("idCatalogo")));
+                    Catalogos buscada= new Catalogos();
+                    buscada.setCId(Integer.parseInt(request.getParameter("idCatalogo")));
                     c = cBL.findByOther(buscada);
                     
                     //se pasa la informacion del objeto a formato JSON
@@ -87,16 +87,15 @@ public class CatalogosServlet extends HttpServlet {
                 case "agregarCatalogo": case "modificarCatalogo":   //Una pelicula o serie no deberia poder ser modificada
                     
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
-                    c.setPk_idCata(Integer.parseInt(request.getParameter("idCatalogo")));
-                    c.setNombre(request.getParameter("nombreCatalogo"));
-                    c.setActor_princ(request.getParameter("actorPrincipal"));
-                    c.setCantidad(Integer.parseInt(request.getParameter("cantidad")));
-                    
-                    c.setDirector(request.getParameter("director"));
-                    c.setPk_idCata(Integer.parseInt(request.getParameter("idCategoria")));
-                    c.setPrecio_alquiler(Float.parseFloat(request.getParameter("precioAlqiler")));
-                    c.setPrecio_compra(Float.parseFloat(request.getParameter("precioCompra")));
-                    c.setTipo(request.getParameter("tipo"));
+                    c.setCId(Integer.parseInt(request.getParameter("idCatalogo")));
+                    c.setCNombre(request.getParameter("nombreCatalogo"));
+                    c.setCActorPrin(request.getParameter("actorPrincipal"));
+                    c.setCCantidad(Integer.parseInt(request.getParameter("cantidad")));
+                    c.setCDirector(request.getParameter("director"));
+                    //c.setCategorias(Integer.parseInt(request.getParameter("idCategoria")));
+                    c.setCPrecAlqu(Float.parseFloat(request.getParameter("precioAlqiler")));
+                    c.setCPrecComp(Float.parseFloat(request.getParameter("precioCompra")));
+                    c.setCTipo(request.getParameter("tipo"));
                     
                     
                     
@@ -105,7 +104,7 @@ public class CatalogosServlet extends HttpServlet {
                     if(accion.equals("agregarCatalogo")){ //es insertar catalogos
                         List<Catalogos> lista = cBL.findAll(Catalogos.class.getName());
                         for(Catalogos catalogo : lista){
-                            if(c.getNombre()== catalogo.getNombre()){  //Busca en los que ya se han agregado si ya existe eel nombre del que se está agregando
+                            if(c.getCNombre()== catalogo.getCNombre()){  //Busca en los que ya se han agregado si ya existe eel nombre del que se está agregando
                                 out.print("E~Usted ha ingresado un catalogo que ya existe");
                                 validacion= true;
                             }
