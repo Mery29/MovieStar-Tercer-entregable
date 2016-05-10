@@ -1,5 +1,5 @@
 package cr.ac.una.prograiv.moviestar.domain;
-// Generated 08/05/2016 06:56:16 AM by Hibernate Tools 4.3.1
+// Generated May 8, 2016 3:08:05 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

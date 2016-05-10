@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="moviestar"/>
-  <table-filter match-name="catalogos"/>
-  <table-filter match-name="media"/>
-  <table-filter match-name="detalles"/>
-  <table-filter match-name="usuarios"/>
-  <table-filter match-name="ordenes"/>
-  <table-filter match-name="categorias"/>
+  <schema-selection match-catalog="MovieStar"/>
+  <table-filter match-name="Categorias"/>
+  <table-filter match-name="Catalogos"/>
+  <table-filter match-name="Ordenes"/>
+  <table-filter match-name="Detalles"/>
+  <table-filter match-name="Usuarios"/>
+  <table-filter match-name="Media"/>
 </hibernate-reverse-engineering>

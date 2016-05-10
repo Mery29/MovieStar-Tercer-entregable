@@ -63,12 +63,14 @@ public class UsuariosDAO extends HibernateUtil implements IBaseDAO<Usuarios, Int
     @Override
     public Usuarios findByOther(Usuarios u) {
       Usuarios usuario = null;
-
-        try {
-            iniciaOperacion();
-            usuario = (Usuarios) getSesion().get(Usuarios.class, u);
-        } finally {
-            getSesion().close();
+      List<Usuarios> aux;
+      aux = findAll();          
+        for (int i =0; i <= aux.size(); i++) {
+                if (aux.get(i).getUCorreo().equals(u.getUCorreo())  && aux.get(i).getUContrasena().equals(u.getUContrasena())) {
+                    usuario = aux.get(i);
+                    usuario.setOrdeneses(null);
+                    return usuario;
+            }
         }
         return usuario;
     }
@@ -82,7 +84,8 @@ public class UsuariosDAO extends HibernateUtil implements IBaseDAO<Usuarios, Int
         } finally {
             getSesion().close();
         }
-
+        for (int i =0; i < listaUsuarios.size(); i++)
+            listaUsuarios.get(i).setOrdeneses(null);
         return listaUsuarios;
     }
 

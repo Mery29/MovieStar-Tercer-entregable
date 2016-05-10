@@ -10,12 +10,9 @@ import cr.ac.una.prograiv.moviestar.bl.CatalogosBL;
 import cr.ac.una.prograiv.moviestar.domain.Catalogos;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,9 +21,20 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mery Zúñiga
  */
+@WebServlet(name = "CatalogosServlet", urlPatterns = {"/CatalogosServlet"})
 public class CatalogosServlet extends HttpServlet {
-    
-   protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
@@ -87,14 +95,13 @@ public class CatalogosServlet extends HttpServlet {
                 case "agregarCatalogo": case "modificarCatalogo":   //Una pelicula o serie no deberia poder ser modificada
                     
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
-                    c.setCId(Integer.parseInt(request.getParameter("idCatalogo")));
-                    c.setCNombre(request.getParameter("nombreCatalogo"));
-                    c.setCActorPrin(request.getParameter("actorPrincipal"));
+                    c.setCNombre(request.getParameter("nombre"));
+                    c.setCActorPrin(request.getParameter("actor"));
                     c.setCCantidad(Integer.parseInt(request.getParameter("cantidad")));
                     c.setCDirector(request.getParameter("director"));
-                    //c.setCategorias(Integer.parseInt(request.getParameter("idCategoria")));
-                    c.setCPrecAlqu(Float.parseFloat(request.getParameter("precioAlqiler")));
-                    c.setCPrecComp(Float.parseFloat(request.getParameter("precioCompra")));
+                    //c.setCategorias(request.getParameter("idCategoria"));
+                    c.setCPrecAlqu(Float.parseFloat(request.getParameter("precioA")));
+                    c.setCPrecComp(Float.parseFloat(request.getParameter("precioC")));
                     c.setCTipo(request.getParameter("tipo"));
                     
                     
@@ -104,7 +111,7 @@ public class CatalogosServlet extends HttpServlet {
                     if(accion.equals("agregarCatalogo")){ //es insertar catalogos
                         List<Catalogos> lista = cBL.findAll(Catalogos.class.getName());
                         for(Catalogos catalogo : lista){
-                            if(c.getCNombre()== catalogo.getCNombre()){  //Busca en los que ya se han agregado si ya existe eel nombre del que se está agregando
+                            if(catalogo.getCNombre()== null ? c.getCNombre()== null : catalogo.getCNombre().equals(c.getCNombre())){  //Busca en los que ya se han agregado si ya existe eel nombre del que se está agregando
                                 out.print("E~Usted ha ingresado un catalogo que ya existe");
                                 validacion= true;
                             }
@@ -138,9 +145,9 @@ public class CatalogosServlet extends HttpServlet {
         } catch (Exception e) {
             out.print("E~" + e.getMessage());
         }
+
     }
-    
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -179,4 +186,5 @@ public class CatalogosServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08/05/2016 06:56:16 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 8, 2016 3:08:06 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="cr.ac.una.prograiv.moviestar.domain.Categorias" table="categorias" catalog="moviestar" optimistic-lock="version">
+    <class name="cr.ac.una.prograiv.moviestar.domain.Categorias" table="Categorias" catalog="MovieStar" optimistic-lock="version">
         <id name="CId" type="int">
             <column name="c_Id" />
             <generator class="assigned" />
@@ -14,7 +14,7 @@
         <property name="CObs" type="string">
             <column name="c_Obs" length="45" not-null="true" />
         </property>
-        <set name="catalogoses" table="catalogos" inverse="true" lazy="true" fetch="select">
+        <set name="catalogoses" table="Catalogos" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="c_categoria" />
             </key>

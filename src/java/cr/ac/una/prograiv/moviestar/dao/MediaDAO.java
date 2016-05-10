@@ -81,7 +81,7 @@ public class MediaDAO extends HibernateUtil implements IBaseDAO<Media, Integer>{
         List<Media> listaMedia;
         try {
             iniciaOperacion();
-            listaMedia = getSesion().createQuery("from media where categoria = "+"'"+o+"'").list();
+            listaMedia = getSesion().createQuery("from Media where categoria = "+"'"+o+"'").list();
         } finally {
             getSesion().close();
         }

@@ -23,6 +23,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/ajSlider.js"></script>
         <script src="js/myJs.js"></script> 
+        <script src="js/registro.js"/></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <link rel="shortcut icon" href="media/icon.ico">  
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +50,7 @@
                         <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Películas<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="peliculasComedia.html">Comedia</a></li>
+                        <li><a href="usuariosAdmin.jsp">Comedia</a></li>
                         <li><a href="peliculasRomance.html">Romance</a></li>
                         <li><a href="peliculasTerror.html">Terror</a></li>
                         <li><a href="peliculasFiccion.html">Ciencia ficción</a></li>
@@ -72,8 +73,8 @@
                     <li><a href="contactenos.html">Contáctanos</a></li>
                     </ul>
                 </div> 
-                <form class="navbar-form navbar-right" method="post">
-                    <a data-toggle="modal" data-target="#deleteMessage" class="btn btn-primary"><span class="glyphicon"></span>Iniciar Sesion</a>
+                <form id="loginForm" class="navbar-form navbar-right" method="post">
+                    <a data-toggle="modal" data-target="#deleteMessage" class="btn btn-primary" id="login2"><span class="glyphicon"></span>Iniciar Sesion</a>
                     <div id="deleteMessage" class="modal fade in" tabindex="-1" role="dialog" aria-hidden="false">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -83,8 +84,8 @@
                                 </div>
                                 <div class="modal-body">
                                     <p><input type="text" name="eid" id="email" placeholder="Correo Electrónico"></p>
-                                    <p><input type="password" name="passwd" placeholder="Contraseña"></p>
-                                    <p><button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                                    <p><input type="password" name="passwd" id="contra" placeholder="Contraseña"></p>
+                                    <p><button id="login" type="button" class="btn btn-primary">Iniciar Sesión</button>
                                           <a href="#">¿Olvidaste la contraseña?</a>
                                     </p>
                                 </div>
@@ -101,6 +102,8 @@
                       <input type="search" class="form-control " placeholder="Buscar por nombre, Director, Actor principal o Categoría">
                     </div>
                     <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
+                    <div class="form-group" id="nombreUsuario">
+                    </div>
                 </form>
             </div>
             

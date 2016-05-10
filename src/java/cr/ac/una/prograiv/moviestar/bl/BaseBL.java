@@ -24,6 +24,11 @@ private final LinkedHashMap<String, IBaseDAO> daos;
     public BaseBL() {
         daos = new LinkedHashMap();
         daos.put("cr.ac.una.prograiv.moviestar.domain.Media", new MediaDAO());
+        daos.put("cr.ac.una.prograiv.moviestar.domain.Usuarios", new UsuariosDAO());
+        daos.put("cr.ac.una.prograiv.moviestar.domain.Catalogos", new CatalogosDAO());
+        daos.put("cr.ac.una.prograiv.moviestar.domain.Ordenes", new OrdenesDAO());
+        daos.put("cr.ac.una.prograiv.moviestar.domain.Categorias", new CategoriasDAO());
+        daos.put("cr.ac.una.prograiv.moviestar.domain.Detalles", new DetallesDAO());
     }
     
     public IBaseDAO getDao(String className){

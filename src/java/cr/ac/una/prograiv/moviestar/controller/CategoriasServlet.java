@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,9 +21,20 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mery Zúñiga
  */
+@WebServlet(name = "CategoriasServlet", urlPatterns = {"/CategoriasServlet"})
 public class CategoriasServlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
@@ -69,15 +81,14 @@ public class CategoriasServlet extends HttpServlet {
                 case "agregarCategoria": case "modificarCategoria":  //Un modificar categoria no se usa
 
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
-                    c.setCId(Integer.parseInt(request.getParameter("idPelicula")));
-                    c.setCNombre(request.getParameter("nombreCategoria"));
+                    c.setCNombre(request.getParameter("nombre"));
                     c.setCObs(request.getParameter("observaciones"));
                    
                     boolean validacion= false;
                     if(accion.equals("agregarCategoria")){ //es insertar categorias
-                        List<Categorias> lista = cBL.findAllByOther(Categorias.class.getName());
+                        List<Categorias> lista = cBL.findAll(Categorias.class.getName());
                         for(Categorias categorias : lista){
-                            if(c.getCNombre()== categorias.getCNombre()){  //Compara si en lista ya se ha ingresado una categoría con el mismo nombre
+                            if(categorias.getCNombre()== null ? c.getCNombre()== null : categorias.getCNombre().equals(c.getCNombre())){  //Compara si en lista ya se ha ingresado una categoría con el mismo nombre
                                 out.print("E~Usted ha ingresado una categoría que ya existe");
                                 validacion= true;
                             }
@@ -111,9 +122,9 @@ public class CategoriasServlet extends HttpServlet {
         } catch (Exception e) {
             out.print("E~" + e.getMessage());
         }
+
     }
-    
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -153,5 +164,4 @@ public class CategoriasServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
 }

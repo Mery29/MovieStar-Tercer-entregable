@@ -17,7 +17,7 @@ import org.hibernate.SessionFactory;
  */
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory;
+    private static final SessionFactory sessionFa;
     private Session sesion;
 
     public Session getSesion() {
@@ -51,7 +51,7 @@ public class HibernateUtil {
         try {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
             // config file.
-            sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
+            sessionFa = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
             // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);
@@ -60,6 +60,6 @@ public class HibernateUtil {
     }
     
     public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+        return sessionFa;
     }
 }

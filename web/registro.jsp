@@ -16,11 +16,9 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="css/font-awesome-4.5.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="css/creative.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/ajSlider.js"></script>
-        <script src="js/myJs.js"></script> 
+        <script src="js/registro.js"></script> 
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <link rel="shortcut icon" href="media/icon.ico">  
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,7 +97,7 @@
                 </form>
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                      <input type="search" class="form-control " placeholder="Buscar por nombre, Director, Actor principal o Categoría">
+                      <input id="buscar" type="search" class="form-control " placeholder="Buscar por nombre, Director, Actor principal o Categoría">
                     </div>
                     <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
                 </form>
@@ -186,6 +184,12 @@
                                         <button type="submit" id="agregarUsuario" class="btn btn-primary btn-lg">Registrarme</button>
                                     </div>
                                 </div>
+                                <div class="form-group height25" >
+                                <div class="alert alert-success hiddenDiv" id="mesajeResult">
+                                    <strong id="mesajeResultNeg"></strong> 
+                                    <span id="mesajeResultText"></span>
+                                </div>
+                            </div>
                             </fieldset>
                         </form>
                     </div>

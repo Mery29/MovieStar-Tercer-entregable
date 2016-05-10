@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08/05/2016 06:56:16 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 8, 2016 3:08:06 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="cr.ac.una.prograiv.moviestar.domain.Usuarios" table="usuarios" catalog="moviestar" optimistic-lock="version">
+    <class name="cr.ac.una.prograiv.moviestar.domain.Usuarios" table="Usuarios" catalog="MovieStar" optimistic-lock="version">
         <id name="UId" type="int">
             <column name="u_id" />
             <generator class="assigned" />
@@ -38,7 +38,7 @@
         <property name="UTipo" type="string">
             <column name="u_tipo" length="10" />
         </property>
-        <set name="ordeneses" table="ordenes" inverse="true" lazy="true" fetch="select">
+        <set name="ordeneses" table="Ordenes" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="o_usuario" />
             </key>
