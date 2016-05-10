@@ -83,7 +83,9 @@ public class CategoriasDAO extends HibernateUtil implements IBaseDAO<Categorias,
         } finally {
             getSesion().close();
         }
-
+        for (int i=0; i < listaCategorias.size(); i++){
+            listaCategorias.get(i).setCatalogoses(null);
+        }
         return listaCategorias;
     }
 

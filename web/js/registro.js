@@ -63,7 +63,7 @@ function consultarUsuarios() {
             accion: 'consultarUsuarios'
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las personas en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de los usuarios en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTablaUsuarios(data);
@@ -81,7 +81,7 @@ function consultarCategorias() {
             accion: 'consultarCategorias'
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las personas en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de las categorías en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTablaCategorias(data);
@@ -99,7 +99,7 @@ function consultarCatalogos() {
             accion: 'consultarCatalogos'
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las personas en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de los catalogos en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTablaCatalogos(data);

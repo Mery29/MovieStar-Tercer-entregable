@@ -69,7 +69,7 @@ public class CategoriasServlet extends HttpServlet {
                     break;
                     
                 case "consultarCategoriasPorNombre":   
-                    Categorias consultada= null;
+                    Categorias consultada= new Categorias();
                     consultada.setCNombre(request.getParameter("nombreCategoria"));
                     c = cBL.findByOther(consultada);
                     

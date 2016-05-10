@@ -70,7 +70,7 @@ public class CatalogosServlet extends HttpServlet {
                     
                 case "buscarCatalogo":  
                     //se consulta la persona por ID
-                    Catalogos consultado= null;
+                    Catalogos consultado= new Catalogos();
                     consultado.setCNombre(request.getParameter("nombreCatalogo"));
                     consultado.setCDirector(request.getParameter("director"));
                     consultado.setCActorPrin(request.getParameter("actorPrincipal"));

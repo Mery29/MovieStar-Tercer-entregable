@@ -85,7 +85,9 @@ public class CatalogosDAO extends HibernateUtil implements IBaseDAO<Catalogos, I
         } finally {
             getSesion().close();
         }
-
+        for (int i=0; i < listaCatalogos.size(); i++){
+            listaCatalogos.get(i).setDetalleses(null);
+        }
         return listaCatalogos;
     }
 
