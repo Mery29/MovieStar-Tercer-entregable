@@ -39,7 +39,6 @@ function login() {
                 contrasena: $("#contra").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
-                $('#login2').append("putaMadre");
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
             },
             success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
@@ -49,6 +48,7 @@ function login() {
                 $("#nombreUsuario").html("");
                 var x = document.getElementById('nombreUsuario');
                 x.innerHTML = "<p style= "+"color:#fff"+">Bienvenido "+ data.UNombre + "</p>";
+                $(location).attr('href', 'http://localhost:8080/WebAppMovieStar/usuariosAdmin.jsp');
             },
             type: 'POST',
             dataType: 'json'
