@@ -9,10 +9,6 @@
         <servlet-class>cr.ac.una.prograiv.moviestar.controller.UsuariosServelt</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CatalogosServlet</servlet-name>
-        <servlet-class>cr.ac.una.prograiv.moviestar.controller.CatalogosServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CategoriasServlet</servlet-name>
         <servlet-class>cr.ac.una.prograiv.moviestar.controller.CategoriasServlet</servlet-class>
     </servlet>
@@ -24,6 +20,10 @@
         <servlet-name>OrdenesServlet</servlet-name>
         <servlet-class>cr.ac.una.prograiv.moviestar.controller.OrdenesServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CatalogosServlet</servlet-name>
+        <servlet-class>cr.ac.una.prograiv.moviestar.controller.CatalogosServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MediaServlet</servlet-name>
         <url-pattern>/MediaServlet</url-pattern>
@@ -31,10 +31,6 @@
     <servlet-mapping>
         <servlet-name>UsuariosServelt</servlet-name>
         <url-pattern>/UsuariosServelt</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CatalogosServlet</servlet-name>
-        <url-pattern>/CatalogosServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CategoriasServlet</servlet-name>
@@ -47,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>OrdenesServlet</servlet-name>
         <url-pattern>/OrdenesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CatalogosServlet</servlet-name>
+        <url-pattern>/CatalogosServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

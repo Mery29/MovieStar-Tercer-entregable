@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="css/font-awesome-4.5.0/css/font-awesome.min.css" />
+        
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/creative.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/registro.js"></script> 
@@ -26,8 +28,7 @@
         <link rel="shortcut icon" href="media/icon.ico">  
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/custom.css">
-        <link rel="shortcut icon" href="media/icon.ico">   
-        <link rel="stylesheet" href="css/style.css"> 
+        <link rel="shortcut icon" href="media/icon.ico">
         <link href="css/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
         <script src="js/datetimepicker.js" type="text/javascript"></script>
     </head>
@@ -106,17 +107,6 @@
             </div> </nav>
            
            
-           
-  <div class="accordion" id="accordion2">
-  <div class="accordion-group">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-        Gestión de Categorías
-      </a>
-    </div>
-    <div id="collapseOne" class="accordion-body collapse">
-        <div class="accordion-inner">
-            <div class="container">
                 <div class="modal fade" id="myModalFormulario" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -144,25 +134,10 @@
                             </div>
                         </div>
                     </div>
-                </div>  
-              <h2>Categorías</h2>
-              <br/>
-              <center>
-                  <button type="button" class="btn btn-primary btn-block centered" data-toggle="modal" data-target="#myModalFormulario" id="btnInsertarCategorias">Insertar Categoría</button>
-              </center>
-             </div>
-        </div>
-        <table class="table table-hover table-condensed" id="tablaCategorias"></table>
-  </div>
-  <div class="accordion-group">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        Gestión de Catálogos
-      </a>
-    </div>
-    <div id="collapseTwo" class="accordion-body collapse">
-        <div class="accordion-inner">
-            <div class="container">
+                </div> 
+        
+        
+ 
                 <div class="modal fade" id="myModalFormulario2" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -225,26 +200,11 @@
                             </div>
                         </div>
                     </div>
-                </div>  
-              <h2>Catálogos</h2>
-              <br/>
-              <center>
-                  <button type="button" class="btn btn-primary btn-block centered" data-toggle="modal" data-target="#myModalFormulario2" id="btnInsertarCatalogo">Insertar Catálogo</button>
-              </center>
-            </div>
-          </div>
-        <table class="table table-hover table-condensed" id="tablaCatalogos"></table>
-    </div>
-  </div>
-    <div class="accordion-group">
-        <div class="accordion-heading">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-            Gestión de Usuarios
-          </a>
-        </div>
-        <div id="collapseThree" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="container">
+                </div>
+    
+        
+       
+                
                 <div class="modal fade" id="myModalFormulario3" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -286,7 +246,7 @@
                                     </div>
                                     <div class="form-group" id="groupDireccion">
                                         <label for="direccion">Dirección:</label>
-                                        <input type="text" class="form-control" id="direccion>
+                                        <input type="text" class="form-control" id="direccion">
                                     </div>
                                     <div class="form-group" id="groupTelCasa">
                                         <label for="telCasa">Teléfono de casa:</label>
@@ -307,17 +267,58 @@
                     </div>
                   </div> 
                 </div>
-                <h2>Usuarios</h2>
-                <br/>
-                <center>
-                   <button type="button" class="btn btn-primary btn-block centered" data-toggle="modal" data-target="#myModalFormulario3" id="btnInsertarUsuarios">Insertar Usuarios</button>
-                </center>
-                </div>
+            
+      
+      <div>
+        <h2 style="color: white">Gestión de Categorias</h2>
+           <br/>
+            <center>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">Insertar Categoría</button>
+            </center>
+            </br>
+       </div>
+      <table border="2" class="table table-hover table-condensed" id="tablaCategorias"></table>
+      </br></br>
+      
+      <div>
+        <h2 style="color: white">Gestión de Catálogos</h2>
+           <br/>
+            <center>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalFormulario2" id="btMostarForm">Insertar Catálogo</button>
+            </center>
+            <div>
+                <table>
+                    <tr class="center">
+                        <td style="padding: 8px; padding-left: 200px ;vertical-align: top;" ><label for="buscar">Buscar catálogo por nombre: </label></td>
+                        <td style="padding: 8px; vertical-align: top;"><input type="text" size="50" class="form-control" id="textBuscar" placeholder="Digite el nombre del catálogo"></td>
+                        <td style="padding: 8px; vertical-align: top;"><button type="button" class="btn btn-info" id="buscarPorNombre">Buscar  <span class="glyphicon glyphicon-search"></span></button></td>
+                    </tr>
+                </table>
             </div>
-            <table class="table table-hover table-condensed" id="tablaUsuarios"></table>
-        </div>
-    </div>
-  </div>  
+            </br>
+       </div>
+       <table border="2" class="table table-hover table-condensed" id="tablaCatalogos"></table>
+       </br></br>
+       
+       
+       <div>
+        <h2 style="color: white">Gestión de Usuarios</h2>
+           <br/>
+            <center>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalFormulario3" id="btMostarForm">Insertar Usuario</button>
+            </center>
+            <div>
+                <table>
+                    <tr class="center">
+                        <td style="padding: 8px; padding-left: 200px ;vertical-align: top;" ><label for="buscar">Buscar usuario por identificación: </label></td>
+                        <td style="padding: 8px; vertical-align: top;"><input type="text" size="50" class="form-control" id="textBuscar" placeholder="Digitela cedula del usuario"></td>
+                        <td style="padding: 8px; vertical-align: top;"><button type="button" class="btn btn-info" id="buscarPorNombre">Buscar  <span class="glyphicon glyphicon-search"></span></button></td>
+                    </tr>
+                </table>
+            </div>
+            </br>
+       </div>
+       <table border="2" class="table table-hover table-condensed" id="tablaUsuarios"></table>
     </body>
 </html>
 

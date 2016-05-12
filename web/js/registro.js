@@ -96,7 +96,7 @@ function consultarCatalogos() {
     $.ajax({
         url: 'CatalogosServlet',
         data: {
-            accion: 'consultarCatalogos'
+            accion: 'consultarCatalogo'
         },
         error: function () { //si existe un error en la respuesta del ajax
             alert("Se presento un error a la hora de cargar la información de los catalogos en la base de datos");

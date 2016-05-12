@@ -12,16 +12,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Mery Zúñiga
+ * @author byron
  */
-@WebServlet(name = "CatalogosServlet", urlPatterns = {"/CatalogosServlet"})
 public class CatalogosServlet extends HttpServlet {
 
     /**
@@ -101,7 +99,7 @@ public class CatalogosServlet extends HttpServlet {
                     c.setCDirector(request.getParameter("director"));
                     //c.setCategorias(request.getParameter("idCategoria"));
                     c.setCPrecAlqu(Float.parseFloat(request.getParameter("precioA")));
-                    c.setCPrecComp(Float.parseFloat(request.getParameter("precioC")));
+                    c.setCPrecComp(Float.parseFloat(request.getParameter("precioV")));
                     c.setCTipo(request.getParameter("tipo"));
                     
                     
@@ -145,7 +143,6 @@ public class CatalogosServlet extends HttpServlet {
         } catch (Exception e) {
             out.print("E~" + e.getMessage());
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
